@@ -52,8 +52,8 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-     white-space: nowrap;
             padding: 8px 12px;
+             white-space: nowrap;
             border-radius: 12px;
             font-weight: 700;
             border: 1px solid var(--line);
@@ -364,8 +364,43 @@ footer {
 
 
 
+.delivery-section {
+  background: #f9f9f9;       /* light background */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
 
+.delivery-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111;               /* dark black text */
+  margin-bottom: 10px;
+}
 
+.delivery-section p {
+  font-size: 16px;
+  color: #222;               /* darker text for visibility */
+  margin-bottom: 15px;
+}
+
+.delivery-section .locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.delivery-section .locations span {
+  background: #e0f7fa;
+  color: #00796b;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
 
 
 
@@ -528,33 +563,28 @@ footer {
 
   </section>
 
-  <section class="availability">
-  <h2>📍 Check Service Availability</h2>
-  <p>Enter your city or area to see if we deliver there</p>
-  
-  <div class="search-box">
-    <input type="text" id="locationInput" placeholder="Enter your city...">
-    <button onclick="checkAvailability()">Check</button>
-  </div>
-  
-  <div id="result"></div>
+  <section class="delivery-section">
+  <h2>📍 Delivery Service Availability</h2>
+  <p>We are currently delivering in the following areas:</p>
 
-  <h3>Currently Available In:</h3>
   <div class="locations">
-    <span>Bhagwanpur east</span>
-    <span>Bhagwanpur west</span>
+    <span>Bhagwanpur East</span>
+    <span>Bhagwanpur West</span>
     <span>Bijlipur</span>
     <span>Ratanpura</span>
     <span>Bithauli</span>
     <span>Rahsa</span>
     <span>Karhari</span>
   </div>
+
+  <p><strong>⏰ Delivery Time:</strong> 5:00 AM – 10:00 PM</p>
 </section>
+
 
 
   <footer>
     <p><a href="#">Home</a> | <a href="#">Products</a> | <a href="#">About</a> | <a href="#">Contact</a></p>
-    <p>Email: support@biharfastkart.com | Phone: +91-9142746390</p>
+    <p>Email: rajivkumarsingh1236@gmail.com | Phone: +91-9142746390</p>
     <p class="quote">"Delivering happiness to your doorstep, one order at a time."</p>
     <p>&copy; A Company by Rajeev kumar Singh.</p>
   </footer>
