@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onkit — Fast Food</title>
+
+    <style>
+        /* Base styles from your existing project to ensure consistency */
+        :root{
+            --bg:#cdf8c6;
+            --surface:rgba(15,23,42,0.7);
+            --line:rgba(148,163,184,0.18);
+            --text:#e5e7eb;
+            --muted:#9aa4bf;
+            --primary:#0ea5e9; /* cyan-500 */
+            --primary-600:#0891b2; /* cyan-600 */
+            --accent:#f59e0b; /* amber-500 */
+        }
+        * {box-sizing: border-box;}
+        body {
+            font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(900px 400px at 0% -10%, rgba(14,165,233,.18), transparent),
+                        radial-gradient(800px 400px at 110% 0%, rgba(245,158,11,.15), transparent),
+                        var(--bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        a {color: inherit; text-decoration: none;}
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .site-header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background:var(--surface); border-bottom:1px solid var(--line)}
+        .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; color: #fff;}
+        .brand .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--primary), var(--accent)); box-shadow:0 8px 24px rgba(14,165,233,.35)}
+        .brand span{font-size:18px}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            white-space: nowrap;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn.call {
+            background: linear-gradient(135deg, var(--primary), var(--primary-600));
+            color: #fff;
+        }
+
+        /* New styles for the product page */
+        .product-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-option {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .product-option:hover {
+            transform: translateY(-5px);
+        }
+        .product-option img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .product-option h4 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .price-info {
+            margin-bottom: 20px;
+        }
+        .price-info .market-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .price-info .our-price {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+        }
+        .service-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0ea5e9, #0891b2);
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .service-btn:hover {
+            background: linear-gradient(135deg, #0891b2, #0ea5e9);
+        }
+
+        /* NEW Style for the custom order section */
+        .custom-order {
+            text-align: center;
+            padding: 30px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, #f59e0b, #fcd34d); /* Amber gradient */
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .custom-order p {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .custom-order .call-btn {
+            background: #fff;
+            color: #f59e0b;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .custom-order .call-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer and responsive styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 8px 0;
+        }
+        footer a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+        @media (max-width: 480px) {
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Onkit Home">
+                <div class="logo" aria-hidden="true"></div>
+                <span>Onkit</span>
+            </a>
+            <a class="btn call" href="tel:+919142746390">📞 Call</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="product-section">
+            <h2 style="text-align:center; color:#111;">Fast Food</h2>
+            
+            <div class="product-list">
+                <div class="product-option">
+                    <img src="burger.jpg" alt="Burger">
+                    <h4>Burger</h4>
+                    <div class="price-info">
+                        <span class="market-price">Market Price: ₹25</span>
+                        <span class="our-price">Our Price: ₹20</span>
+                    </div>
+                    <a href="tel:+919142746390" class="service-btn">📞 Call to Order</a>
+                </div>
+                
+                <div class="product-option">
+                    <img src="momos.jpg" alt="Momos">
+                    <h4>Momos</h4>
+                    <div class="price-info">
+                        <span class="market-price">Market Price: ₹25 half</span>
+                        <span class="our-price">Our Price: ₹23</span>
+                    </div>
+                    <a href="tel:+919142746390" class="service-btn">📞 Call to Order</a>
+                </div>
+
+                <div class="product-option">
+                    <img src="chowin.jpg" alt="Chowmein">
+                    <h4>Chowmein</h4>
+                    <div class="price-info">
+                        <span class="market-price">Market Price: ₹35 full</span>
+                        <span class="our-price">Our Price: ₹30</span>
+                    </div>
+                    <a href="tel:+919142746390" class="service-btn">📞 Call to Order</a>
+                </div>
+
+                <div class="product-option">
+                    <img src="chat.jpg" alt="Chat">
+                    <h4>Chat</h4>
+                    <div class="price-info">
+                        <span class="market-price">Market Price: ₹35 full</span>
+                        <span class="our-price">Our Price: ₹32</span>
+                    </div>
+                    <a href="tel:+919142746390" class="service-btn">📞 Call to Order</a>
+                </div>
+
+
+
+
+
+                <div class="product-option">
+                    <img src="chola.jpg" alt="Chowmein">
+                    <h4>chola</h4>
+                    <div class="price-info">
+                        <span class="market-price">Market Price: ₹30</span>
+                        <span class="our-price">Our Price: ₹28</span>
+                    </div>
+                    <a href="tel:+919142746390" class="service-btn">📞 Call to Order</a>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </section>
+
+        <section class="custom-order">
+            <p>बाकी कोई भी फास्ट फूड कम दाम में ऑर्डर करने के लिए कॉल करें।</p>
+            <a href="tel:+919142746390" class="call-btn">
+                📞 Call Now
+            </a>
+        </section>
+
+    </main>
+     <footer>
+        <p><a href="index.html">Home</a> | <a href="#">Products</a> | <a href="#">About</a> | <a href="#">Contact</a></p>
+        <p>Email: rajivkumarsingh1236@gmail.com | Phone: +91-9142746390</p>
+        <p class="quote">"Delivering happiness to your doorstep, one order at a time."</p>
+        <p>&copy; 2025 ONKIT. All rights reserved.</p>
+    </footer>
+   
+  
+</body>
+</html>
